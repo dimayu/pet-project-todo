@@ -1,14 +1,34 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-$bg: #2f4577;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap');
+@import "components/UI/variables";
+@import "components/Todos/TodoHeader.module";
+@import "components/Todos/Todo.module";
+@import "components/Todos/TodoForm.module";
+@import "components/Todos/TodoList.module";
+@import "components/UI/reset";
+@import "components/UI/ButtonAdd.module";
 
 body {
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: $bg;
-  color: #fff;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $color-red;
+  overflow: hidden;
+}
+
+.todo {
+  max-width: 390px;
+  height: 90%;
+  position: relative;
+  margin: 5% auto;
+  background-color: #fff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.wrapper {
+  padding: 24px 16px;
 }

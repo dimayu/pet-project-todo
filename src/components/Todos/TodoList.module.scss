@@ -1,0 +1,16 @@
+.todo__list {
+  background-color: $color-red-bg;
+  border-radius: 20px;
+  color: #fff;
+  padding: 12px;
+
+  &--title {
+    margin: 0 0 12px 40px;
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  &--description {
+    margin-left: 40px;
+  }
+}
