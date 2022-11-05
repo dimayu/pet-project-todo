@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap');
-@import "components/UI/variables";
-@import "components/Todos/TodoHeader.module";
+@import "baseStyles/variables";
+@import "components/Todos/TodoHeader/TodoHeader.module";
 @import "components/Todos/Todo.module";
-@import "components/Todos/TodoForm.module";
-@import "components/Todos/TodoList.module";
-@import "components/UI/reset";
+@import "components/Todos/TodoForm/TodoForm.module";
+@import "components/Todos/TodoLists/TodoList.module";
+@import "baseStyles/reset";
 @import "components/UI/ButtonAdd.module";
 
 body {

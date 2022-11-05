@@ -1,7 +1,8 @@
-function TodoHeader() {
+function TodoHeader({ addClass }) {
+
     return(
       <header className="todo__header">
-          <button className="todo__header--btn">
+          <button className="todo__header--btn" onClick={ addClass }>
               <span></span>
               <span></span>
               <span></span>

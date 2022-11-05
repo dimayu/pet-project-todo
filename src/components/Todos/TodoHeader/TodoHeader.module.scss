@@ -12,11 +12,28 @@
     height: 30px;
     padding: 0;
 
+    .todo-grid & {
+
+      span {
+        width: 100%;
+        height: 3px;
+
+        &:nth-child(2) {
+          margin: 2px 0;
+        }
+
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+
     span {
       width: 45%;
       height: 45%;
       border-radius: 2px;
       background-color: $color-red;
+      transition: all .1ms;
     }
   }
 
