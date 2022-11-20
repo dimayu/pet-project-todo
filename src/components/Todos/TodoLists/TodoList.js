@@ -14,6 +14,7 @@ function TodoList({ todos, deleteTodo, toggleTodo }) {
                           onClick={() => toggleTodo(todo.id)}
                       />
                       <h2 className="todo__list--title">{todo.title}</h2>
+                      <h2 className="todo__list--title">{todo.description}</h2>
                       <RiDeleteBinLine
                           className="icon icon-delete"
                           onClick={() => deleteTodo(todo.id)}

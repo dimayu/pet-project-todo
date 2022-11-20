@@ -6,9 +6,10 @@ import TodoForm from "./TodoForm/TodoForm";
 
 function Todo() {
     const [todos, setTodos] = useState([]);
-    const addTodoHandler = (title) => {
+    const addTodoHandler = (title, description) => {
         const newTodo = {
             title: title,
+            description: description,
             isCompleted: false,
             id: uuidv4()
         };
@@ -48,10 +49,13 @@ function Todo() {
                     />
                 </div>
                 {completedTodosCount > 0 && (
-                    <h3 className="title--completed">{`You have completed ${completedTodosCount} ${
-                        completedTodosCount > 1 ? 'todos' : 'todo'
-                    }`}</h3>
-                )}
+                    <h3 className="title--completed">
+                        {`You have completed 
+                        ${completedTodosCount} ${completedTodosCount > 1 
+                            ? 'todos' 
+                            : 'todo'
+                    }`}</h3>)
+                }
                 <TodoForm addTodo={addTodoHandler}/>
             </main>
         </>

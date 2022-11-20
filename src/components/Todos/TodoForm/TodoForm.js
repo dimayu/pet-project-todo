@@ -8,24 +8,43 @@ function TodoForm( { addTodo } ) {
     let toggleClassCheck = addClass ? ' active' : '';
 
     const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const handleAddTitle = (e) => {
+        setTitle(e.target.value);
+    }
+    const handleAddDescription = (e) => {
+        setDescription(e.target.value);
+    }
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
+        addTodo(description);
         addTodo(title);
-        setTitle('');
     }
 
     return(
         <div className={`todo__add${toggleClassCheck}`}>
             <button className="todo__btn-add" onClick={handleClick}>+</button>
-            <form action="src/components/Todos/TodoForm/TodoForm" className="todo__form" onSubmit={onSubmitHandler}>
+            <form action="src/components/Todos/TodoForm/TodoForm"
+                  className="todo__form"
+                  onSubmit={onSubmitHandler}
+            >
                 <div className="todo__form--close" onClick={handleClick}>&#9587;</div>
                 <p>Todo Title</p>
                 <input
                     value={title}
-                    onChange={(e) =>setTitle(e.target.value)}
+                    onChange={handleAddTitle}
                     type="text"
                     placeholder="Todo title....."
-                    className="todo__form--input"/>
+                    className="todo__form--input"
+                />
+                <input
+                    value={description}
+                    onChange={handleAddDescription}
+                    type="text"
+                    placeholder="Todo description....."
+                    className="todo__form--input"
+                />
                 <button className="todo__form--btn" type="submit" >Save</button>
             </form>
         </div>
