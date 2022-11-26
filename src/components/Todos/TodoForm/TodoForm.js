@@ -18,14 +18,13 @@ function TodoForm( { addTodo } ) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        addTodo(description);
-        addTodo(title);
+        addTodo(title,description);
     }
 
     return(
         <div className={`todo__add${toggleClassCheck}`}>
             <button className="todo__btn-add" onClick={handleClick}>+</button>
-            <form action="src/components/Todos/TodoForm/TodoForm"
+            <form
                   className="todo__form"
                   onSubmit={onSubmitHandler}
             >
@@ -38,6 +37,7 @@ function TodoForm( { addTodo } ) {
                     placeholder="Todo title....."
                     className="todo__form--input"
                 />
+                <p>Todo Description</p>
                 <input
                     value={description}
                     onChange={handleAddDescription}

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import {useState} from "react";
+import {v4 as uuidv4} from "uuid";
 import TodoHeader from "./TodoHeader/TodoHeader";
 import TodoList from "./TodoLists/TodoList";
 import TodoForm from "./TodoForm/TodoForm";
@@ -11,19 +11,22 @@ function Todo() {
             title: title,
             description: description,
             isCompleted: false,
+            isEdit: false,
             id: uuidv4()
         };
         setTodos([...todos, newTodo]);
     };
 
     const deleteTodoHandler = (id) => {
-      setTodos(todos.filter((todo) => todo.id !== id))
+        setTodos(todos.filter((todo) => todo.id !== id))
     };
 
     const [addClassBlock, setAddClassBlock] = useState(false);
+
     function handleClick() {
         setAddClassBlock(addClassBlock => !addClassBlock);
     }
+
     let toggleClassCheck = addClassBlock ? ' todo-grid' : '';
 
     const toggleTodoHandler = (id) => {
@@ -36,9 +39,25 @@ function Todo() {
 
     const completedTodosCount = todos.filter((todo) => todo.isCompleted).length;
 
-    return(
+
+    const editTodoHandler = (id) => {
+        setTodos(todos.map((todo) => {
+            return todo.id === id
+                ? {...todo, isEdit:false, title: todo.title, description: todo.description}
+                : {...todo}
+        }))
+    };
+    const handleSetIsEdit = (id) => {
+        setTodos(todos.map((todo) => {
+            return todo.id === id
+                ? {...todo, isEdit: !todo.isEdit}
+                : {...todo, isEdit: false}
+        }))
+    };
+
+    return (
         <>
-            <main className={ `todo${toggleClassCheck}` }>
+            <main className={`todo${toggleClassCheck}`}>
                 <div className="wrapper">
                     <TodoHeader addClass={handleClick}/>
                     {!todos.length && <h2>Todo list is empty</h2>}
@@ -46,17 +65,21 @@ function Todo() {
                         todos={todos}
                         deleteTodo={deleteTodoHandler}
                         toggleTodo={toggleTodoHandler}
+                        editTodo={editTodoHandler}
+                        toggleIsEdit={handleSetIsEdit}
                     />
                 </div>
                 {completedTodosCount > 0 && (
                     <h3 className="title--completed">
                         {`You have completed 
-                        ${completedTodosCount} ${completedTodosCount > 1 
-                            ? 'todos' 
+                        ${completedTodosCount} ${completedTodosCount > 1
+                            ? 'todos'
                             : 'todo'
-                    }`}</h3>)
+                        }`}</h3>)
                 }
-                <TodoForm addTodo={addTodoHandler}/>
+                <TodoForm
+                    addTodo={addTodoHandler}
+                />
             </main>
         </>
     );
