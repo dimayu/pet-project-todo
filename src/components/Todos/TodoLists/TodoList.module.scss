@@ -8,11 +8,15 @@
     justify-content: space-between;
 
     .todo__list {
-      width: 42%;
+      width: 47%;
       flex-direction: column;
 
       &--title {
         margin: 10px 0;
+      }
+
+      &--description {
+        margin: 0 0 10px;
       }
     }
   }
@@ -46,6 +50,24 @@
   &--completed {
     opacity: .5;
   }
+
+  &--input {
+    height: 24px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+}
+
+.btn {
+  height: 30px;
+  background-color: #b80808;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  font-size: 16px;
+  color: #fff;
 }
 
 .icon {

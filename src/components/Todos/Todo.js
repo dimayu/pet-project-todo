@@ -40,20 +40,14 @@ function Todo() {
     const completedTodosCount = todos.filter((todo) => todo.isCompleted).length;
 
 
-    const editTodoHandler = (id) => {
-        setTodos(todos.map((todo) => {
-            return todo.id === id
-                ? {...todo, isEdit:false, title: todo.title, description: todo.description}
-                : {...todo}
-        }))
-    };
-    const handleSetIsEdit = (id) => {
-        setTodos(todos.map((todo) => {
-            return todo.id === id
-                ? {...todo, isEdit: !todo.isEdit}
-                : {...todo, isEdit: false}
-        }))
-    };
+    // const editTodoHandler = (id) => {
+    //     setTodos(todos.map((todo) => {
+    //         return todo.id === id
+    //             ? {...todo, isEdit:false, title: todo.title, description: todo.description}
+    //             : {...todo}
+    //     }))
+    //     console.log(2);
+    // };
 
     return (
         <>
@@ -63,10 +57,9 @@ function Todo() {
                     {!todos.length && <h2>Todo list is empty</h2>}
                     <TodoList
                         todos={todos}
+                        setTodos={setTodos}
                         deleteTodo={deleteTodoHandler}
                         toggleTodo={toggleTodoHandler}
-                        editTodo={editTodoHandler}
-                        toggleIsEdit={handleSetIsEdit}
                     />
                 </div>
                 {completedTodosCount > 0 && (

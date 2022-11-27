@@ -19,6 +19,8 @@ function TodoForm( { addTodo } ) {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         addTodo(title,description);
+        setTitle('');
+        setDescription('');
     }
 
     return(
@@ -45,7 +47,7 @@ function TodoForm( { addTodo } ) {
                     placeholder="Todo description....."
                     className="todo__form--input"
                 />
-                <button className="todo__form--btn" type="submit" >Save</button>
+                <button className="todo__form--btn" type="submit" onClick={handleClick}>Save</button>
             </form>
         </div>
     );
