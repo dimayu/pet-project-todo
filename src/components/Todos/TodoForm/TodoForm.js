@@ -1,4 +1,8 @@
 import {useState} from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function TodoForm( { addTodo } ) {
     const [addClass, setAddClass] = useState(false);
@@ -9,6 +13,8 @@ function TodoForm( { addTodo } ) {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [startDate, setStartDate] = useState(new Date());
+
     const handleAddTitle = (e) => {
         setTitle(e.target.value);
     }
@@ -16,9 +22,11 @@ function TodoForm( { addTodo } ) {
         setDescription(e.target.value);
     }
 
+    const newDate = String(startDate.getDate()) + '/' + String(startDate.getMonth() + 1) + '/' + String(startDate.getFullYear());
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        addTodo(title,description);
+        addTodo(title, description, newDate);
         setTitle('');
         setDescription('');
     }
@@ -45,6 +53,13 @@ function TodoForm( { addTodo } ) {
                     onChange={handleAddDescription}
                     type="text"
                     placeholder="Todo description....."
+                    className="todo__form--input"
+                />
+                <p>Todo of completion</p>
+                <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    dateFormat="dd/MM/yyyy"
                     className="todo__form--input"
                 />
                 <button className="todo__form--btn" type="submit" onClick={handleClick}>Save</button>

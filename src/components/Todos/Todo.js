@@ -12,10 +12,12 @@ function Todo() {
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
-    const addTodoHandler = (title, description) => {
+    const addTodoHandler = (title, description, date) => {
         const newTodo = {
             title: title,
             description: description,
+            date: date,
+            isOverdue: false,
             isCompleted: false,
             isEdit: false,
             id: uuidv4()
