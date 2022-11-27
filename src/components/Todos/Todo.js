@@ -1,11 +1,17 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {v4 as uuidv4} from "uuid";
 import TodoHeader from "./TodoHeader/TodoHeader";
 import TodoList from "./TodoLists/TodoList";
 import TodoForm from "./TodoForm/TodoForm";
 
 function Todo() {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState(
+        JSON.parse(localStorage.getItem('todos')) || []
+    );
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
     const addTodoHandler = (title, description) => {
         const newTodo = {
             title: title,
@@ -16,6 +22,7 @@ function Todo() {
         };
         setTodos([...todos, newTodo]);
     };
+
 
     const deleteTodoHandler = (id) => {
         setTodos(todos.filter((todo) => todo.id !== id))
@@ -38,16 +45,6 @@ function Todo() {
     };
 
     const completedTodosCount = todos.filter((todo) => todo.isCompleted).length;
-
-
-    // const editTodoHandler = (id) => {
-    //     setTodos(todos.map((todo) => {
-    //         return todo.id === id
-    //             ? {...todo, isEdit:false, title: todo.title, description: todo.description}
-    //             : {...todo}
-    //     }))
-    //     console.log(2);
-    // };
 
     return (
         <>
