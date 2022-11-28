@@ -22,11 +22,11 @@ function TodoForm( { addTodo } ) {
         setDescription(e.target.value);
     }
 
-    const newDate = String(startDate.getDate()) + '/' + String(startDate.getMonth() + 1) + '/' + String(startDate.getFullYear());
+    const newDate = (startDate.getDate()) + '/' + (startDate.getMonth() + 1) + '/' + (startDate.getFullYear());
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        addTodo(title, description, newDate);
+        addTodo(title, description, newDate, startDate);
         setTitle('');
         setDescription('');
     }

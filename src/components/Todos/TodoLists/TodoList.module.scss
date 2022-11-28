@@ -51,6 +51,12 @@
     opacity: .5;
   }
 
+  &--overdue {
+    .todo__list--date {
+      color: #535;
+    }
+  }
+
   &--input {
     height: 24px;
     border: none;

@@ -27,15 +27,12 @@ function TodoList({ todos, setTodos, deleteTodo, toggleTodo }) {
     return(
           <div className="todo-wrapper">
               {todos.map((todo) => (
-                  <div
-                      className={
-                                `todo__list ${todo.isCompleted 
-                                            ? "todo__list--completed" 
-                                            : ""}
+                  <div className={`todo__list ${todo.isCompleted
+                          ? "todo__list--completed"
+                          : ""}
                                             ${todo.isOverdue
-                                            ? "todo__list--completed"
-                                            : ""}
-                                `}
+                          ? "todo__list--overdue"
+                          : ""}`}
                       key={todo.id}
                   >
                       {todo.isEdit
@@ -72,7 +69,7 @@ function TodoList({ todos, setTodos, deleteTodo, toggleTodo }) {
                               <div className="todo__list--content">
                                   <h2 className="todo__list--title">{todo.title}</h2>
                                   <h3 className="todo__list--description">{todo.description}</h3>
-                                  <p>{todo.date}</p>
+                                  <p className="todo__list--date">{todo.date}</p>
                               </div>
                               <div className="todo__list--right">
                                   <RiDeleteBinLine

@@ -8,15 +8,16 @@ function Todo() {
     const [todos, setTodos] = useState(
         JSON.parse(localStorage.getItem('todos')) || []
     );
-
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
-    const addTodoHandler = (title, description, date) => {
+
+    const addTodoHandler = (title, description, date, dateArr) => {
         const newTodo = {
             title: title,
             description: description,
             date: date,
+            dateArr: dateArr,
             isOverdue: false,
             isCompleted: false,
             isEdit: false,
@@ -45,6 +46,19 @@ function Todo() {
                 : {...todo}
         }))
     };
+
+    const overdueTodoHandler = () => {
+        const date = new Date();
+        const currDate = date.toISOString();
+        for (let i = 0; i < todos.length; i++) {
+            if(todos[i].dateArr < currDate) {
+                return todos[i].isOverdue = true
+            } else {
+                todos[i].isOverdue = false
+            }
+        }
+    };
+    setInterval(overdueTodoHandler, 86400000);
 
     const completedTodosCount = todos.filter((todo) => todo.isCompleted).length;
 
