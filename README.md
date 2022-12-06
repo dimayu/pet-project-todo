@@ -2,7 +2,7 @@
 
 ![Illustration for the project]
 <br>
-<img src="https://github.com/dimayu/pet-project-todo/blob/master/screen.png" width="500" height="700"/>
+<img src="https://github.com/dimayu/pet-project-todo/blob/master/screen.png" width="735" height="577"/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
