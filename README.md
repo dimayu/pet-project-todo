@@ -1,7 +1,7 @@
 # First pet project on react
 
 ![Illustration for the project]
-(https://github.com/dimayu/pet-project-todo/raw/master/src/screen.png)
+(https://github.com/dimayu/pet-project-todo/blob/master/screen.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
